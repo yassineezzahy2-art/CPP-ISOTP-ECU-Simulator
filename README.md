@@ -10,6 +10,10 @@ Unlike standard Linux implementations that rely on dynamic memory (`std::vector`
 * **Static Allocation:** No dynamic heap allocation (`new`/`malloc`), preventing memory fragmentation.
 * **Bitwise Protocol Decoding:** Manually parses CAN frame headers to identify Frame Types (Single, First, Consecutive).
 * **Pointer Arithmetic:** Uses efficient pointer offsets for data assembly instead of costly array copying loops.
+* ### 🛡️ Safety & Robustness (New)
+* **Buffer Overflow Protection:** Implemented a "Bouncer" check to reject ISO-TP messages larger than the static buffer (4096 bytes).
+* **MISRA C++ Compliance:** Enforced `static_cast<u8>` on all narrowing conversions to prevent implicit integral promotion errors.
+* **Flow Control:** Implemented ISO 15765-2 Flow Control (PCI 0x30) to manage timing (STmin) and buffer availability (CTS) with the tester.
 
 ## How to Run
 1. Compile with any C++ compiler: 
